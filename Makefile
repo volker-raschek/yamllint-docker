@@ -9,8 +9,8 @@ CONTAINER_RUNTIME?=$(shell which podman)
 
 # YAMLLINT_IMAGE_REGISTRY_NAME
 # Defines the name of the new container to be built using several variables.
-YAMLLINT_IMAGE_REGISTRY_NAME:=docker.io
-YAMLLINT_IMAGE_REGISTRY_USER:=volkerraschek
+YAMLLINT_IMAGE_REGISTRY_NAME:=git.cryptic.systems
+YAMLLINT_IMAGE_REGISTRY_USER:=volker.raschek
 
 YAMLLINT_IMAGE_NAMESPACE?=${YAMLLINT_IMAGE_REGISTRY_USER}
 YAMLLINT_IMAGE_NAME:=yamllint
