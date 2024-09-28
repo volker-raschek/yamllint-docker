@@ -1,40 +1,29 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "assignees": [ "volker.raschek" ],
-  "labels": [ "renovate" ],
-  "packageRules": [
+  "customManagers": [
     {
-      "addLabels": [ "renovate/droneci", "renovate/automerge" ],
-      "automerge": true,
-      "matchManagers": "droneci",
-      "matchUpdateTypes": [ "minor", "patch"]
-    },
-    {
-      "description": "Automatically update patch version of used container images in docker files",
-      "addLabels": [ "renovate/container-image", "renovate/automerge" ],
-      "automerge": true,
-      "matchBaseBranches": [ "master" ],
-      "matchManagers": [ "dockerfile" ],
-      "matchUpdateTypes": [ "patch" ]
-    },
-    {
-      "addLabels": [ "renovate/yamllint", "renovate/automerge" ],
-      "automerge": false,
-      "matchPackageNames": [ "yamllint" ],
-      "matchManagers": [ "regex" ]
-    }
-  ],
-  "rebaseLabel": "renovate/rebase",
-  "rebaseWhen": "behind-base-branch",
-  "regexManagers": [
-    {
+      "customType": "regex",
       "description": "Update version",
       "fileMatch": [
         "^Makefile$"
       ],
       "matchStrings": [
-        "YAMLLINT_VERSION\\?=(?<currentValue>.*) # renovate: datasource=(?<datasource>.*) depName=(?<depName>.*)( lookupName=(?<lookupName>.*))?( versioning=(?<versioning>.*))?"
+        "^[^\\s]*VERSION(:|\\?)?=\"?(?<currentValue>[\\w.]*)\"? # renovate:([\\s]+datasource=['\"]*(?<datasource>[^\\s\"']*)['\"]*|[\\s]+depName=['\"]*(?<depName>[^\\s'\"]*)['\"]*|[\\s]+registryUrl=['\"]*(?<registryUrl>[^\\s'\"]*)['\"]*|[\\s]+versioning=['\"]*(?<versioning>[^\\s'\"]*)['\"]*)*"
       ]
     }
-  ]
+  ],
+  "labels": [ "renovate" ],
+  "packageRules": [
+    {
+      "description": "Automatically update grouped public container images - patch",
+      "addLabels": ["renovate/automerge","renovate/container-images"],
+      "automerge": true,
+      "enabled": true,
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"]
+    }
+  ],
+  "rebaseLabel": "renovate/rebase",
+  "rebaseWhen": "behind-base-branch"
 }
