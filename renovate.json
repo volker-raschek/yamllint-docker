@@ -4,7 +4,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update version",
+      "description": "Extract renovate config",
       "fileMatch": [
         "^Makefile$"
       ],
