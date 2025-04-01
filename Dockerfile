@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.21.3 AS build
+FROM docker.io/library/python:3.13.2-alpine AS build
 
 ARG YAMLLINT_VERSION=master
 
@@ -8,9 +8,12 @@ RUN set -ex && \
     apk add git python3 py-pip
 
 RUN git clone --branch ${YAMLLINT_VERSION} https://github.com/adrienverge/yamllint /tmp/yamllint && \
-    python3 -m pip install /tmp/yamllint && \
-    rm -rf /tmp/yamllint
+    python3 -m venv /venv && \
+    /venv/bin/pip3 install /tmp/yamllint && \
+    rm -r -f /tmp/yamllint
+
+ENV PATH="/venv/bin:${PATH}"
 
 WORKDIR /workspace
 
-ENTRYPOINT [ "/usr/bin/yamllint" ]
+ENTRYPOINT [ "yamllint" ]
