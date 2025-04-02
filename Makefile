@@ -1,6 +1,6 @@
 # YAMLLINT_VERSION
 # Only required to install a specifiy version
-YAMLLINT_VERSION?=v1.35.0 # renovate: datasource=github-releases depName=adrienverge/yamllint
+YAMLLINT_VERSION?=v1.35.1 # renovate: datasource=github-releases depName=adrienverge/yamllint
 
 # CONTAINER_RUNTIME
 # The CONTAINER_RUNTIME variable will be used to specified the path to a
