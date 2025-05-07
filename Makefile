@@ -1,5 +1,5 @@
 # YAMLLINT_VERSION
-# Only required to install a specifiy version
+# Only required to install a specify version
 YAMLLINT_VERSION?=v1.37.0 # renovate: datasource=github-releases depName=adrienverge/yamllint
 
 # CONTAINER_RUNTIME
