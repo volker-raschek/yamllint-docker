@@ -24,11 +24,12 @@ jobs:
           TAG=$(echo ${{ github.ref_name }} | sed 's/v//gm')
 
           docker buildx build \
-            --platform linux/arm64 \
+            --build-arg YAMLLINT_VERSION=${{ github.ref_name }} \
             --file Dockerfile \
+            --platform linux/arm64 \
             --provenance false \
-            --tag git.cryptic.systems/volker.raschek/yamllint:${TAG}-arm64 \
             --push \
+            --tag git.cryptic.systems/volker.raschek/yamllint:${TAG}-arm64 \
             .
 
   push-amd64:
@@ -49,11 +50,12 @@ jobs:
           TAG=$(echo ${{ github.ref_name }} | sed 's/v//gm')
 
           docker buildx build \
-            --platform linux/amd64 \
+            --build-arg YAMLLINT_VERSION=${{ github.ref_name }} \
             --file Dockerfile \
+            --platform linux/amd64 \
             --provenance false \
-            --tag git.cryptic.systems/volker.raschek/yamllint:${TAG}-amd64 \
             --push \
+            --tag git.cryptic.systems/volker.raschek/yamllint:1.37.1-amd64 \
             .
 
   push-manifest:
