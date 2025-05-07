@@ -1,6 +1,5 @@
-# yamllint-docker
+# yamllint
 
-[![Build Status](https://drone.cryptic.systems/api/badges/volker.raschek/yamllint-docker/status.svg)](https://drone.cryptic.systems/volker.raschek/yamllint-docker)
 [![Docker Pulls](https://img.shields.io/docker/pulls/volkerraschek/yamllint)](https://hub.docker.com/r/volkerraschek/yamllint)
 
 This project contains all sources to build the container image
