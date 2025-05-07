@@ -55,7 +55,7 @@ jobs:
             --platform linux/amd64 \
             --provenance false \
             --push \
-            --tag git.cryptic.systems/volker.raschek/yamllint:1.37.1-amd64 \
+            --tag git.cryptic.systems/volker.raschek/yamllint:${TAG}-amd64 \
             .
 
   push-manifest:
