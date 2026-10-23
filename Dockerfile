@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.15.0-alpine AS build
+FROM docker.io/library/python:3.15.1-alpine AS build
 
 ARG YAMLLINT_VERSION=master
 
